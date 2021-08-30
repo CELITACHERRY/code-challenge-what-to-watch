@@ -3,7 +3,8 @@ import axios from "axios";
 
 export default function MovieData() {
   const url = "http://www.omdbapi.com/?i=tt3896198&apikey=4ef47865";
-  const [moivieData, setMovieData] = useState(null);
+  console.log(url);
+  const [movieData, setMovieData] = useState([]);
 
   useEffect(() => {
     axios.get(url).then((response) => {
@@ -11,10 +12,16 @@ export default function MovieData() {
     });
   }, [url]);
   
-  if (moivieData) {
+  if (movieData) {
+
+ 
     return (
       <div>
-        <h1>{moivieData.Awards}</h1>
+        <h1>{movieData.plot}</h1>
+        <h1>{movieData.title}</h1>
+        <h1>{movieData.released}</h1>
+        <h1>{movieData.ratings}</h1>
+        <h1>{movieData.poster}</h1>
       </div>
     )
   }
